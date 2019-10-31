@@ -4,7 +4,7 @@ int main() {
     int noOffood = 3;
     int j;
     char food[][20]={"Pizza","Pasta","Salad"};
-    char cutlery[][15]={"Yes","No"};
+    char cutlery[3][15]={"Yes","No"};
     int nofoodname[] = {3,2,4};
     char foodname[3][4][20] = {
             {"Pizza Carbonara", "Pizza Diavola", "Pizza Margherita"},
@@ -24,7 +24,6 @@ int main() {
     char drinks[][20] = {"Coca-cola","Fanta","Lipton","Water","No thanks"};
     double drinksPrices[] = {5, 5, 5, 4, 0};
     int choice, foodChoice, foodnameChoice,cutleryChoice,drinkChoice;
-    int noAddItemsChosen = 0;
     int state =0;
     int confirmorder = 0;
     while(!confirmorder){
@@ -85,7 +84,8 @@ int main() {
                 }
                 printf("%c) Go back\n",'a'+nodrinks);
                 choice = getchar();
-                 drinkChoice=choice-'a';
+
+                drinkChoice=choice-'a';
 
                 if(choice == 'a'+nodrinks) {
                     state--;
@@ -103,22 +103,22 @@ int main() {
                     printf(") %s\n", cutlery[j]);
                 }
                 printf("%c) Go back\n",'a'+2);
-                    choice = getchar();
-                    getchar();
-                 cutleryChoice = choice - 'a';
-                if(choice == 'a'+2) {
+                getchar();
+                choice = getchar();
+                    cutleryChoice = choice - 'a';
+                getchar();
+
+                if(cutleryChoice == 2) {
                     state--;
-                    getchar();
                     break;
                 }
-                cutleryChoice = choice - 'a';
                 state++;
                 break;
 
             }
             case 5:{
                 printf("Any aditional info?\n");
-                getchar();
+
                 gets(info);
                 state++;
                 break;
@@ -128,18 +128,17 @@ int main() {
                 printf("-------------\n");
                 printf("-name: %s\n", username);
                 printf("food items:\n");
-                printf("--- %s (%.2f)\n", food[foodChoice][foodnameChoice], prices[foodChoice][foodnameChoice]);
+                printf("--- %s (%.2f)\n", foodname[foodChoice][foodnameChoice], prices[foodChoice][foodnameChoice]);
                 printf("--- %s (%.2f)\n", drinks[drinkChoice], drinksPrices[drinkChoice]);
                 printf("Cutlery: %s\n",cutlery[cutleryChoice]);
                 printf("Aditional info: %s\n", info);
-                total=prices[foodChoice][foodnameChoice]+drinksPrices[drinkChoice];
-                printf("Payment amount: %d\n", total);
+                printf("Payment amount: %.2f\n", prices[foodChoice][foodnameChoice] + drinksPrices[drinkChoice]);
                 printf("-------------\n");
                 printf("a) Confirm order\n");
                 printf("b) Go back\n");
                 choice = getchar();
                 if(choice=='a') {
-                    printf("Order confirmed! Thank you for buying from us, %s\n", username);
+                    printf("Order confirmed! Thank you for buying from us, %s!\n", username);
                     confirmorder = 1;
                 } else {
                     state--;
