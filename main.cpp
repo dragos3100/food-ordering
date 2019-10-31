@@ -16,10 +16,14 @@ int main() {
             {23, 21},
             {23, 22, 19, 21}
     };
+    double total;
+    char username[20];
+    char password[20];
+    char info[50];
     int nodrinks = 4;
     char drinks[][20] = {"Coca-cola","Fanta","Lipton","Water","No thanks"};
     double drinksPrices[] = {5, 5, 5, 4, 0};
-    int choice, foodChoice, foodnameChoice,cutleryChoice;
+    int choice, foodChoice, foodnameChoice,cutleryChoice,drinkChoice;
     int noAddItemsChosen = 0;
     int state =0;
     int confirmorder = 0;
@@ -28,8 +32,7 @@ int main() {
             case 0: {
                 printf("Welcome to Food Thingies!\n");
                 printf("Please sign in to continue!\n");
-                char username[20];
-                char password[20];
+
                 printf("---Username\n");
                 gets(username);
                 printf("---Password\n");
@@ -38,22 +41,23 @@ int main() {
                 break;
             }
             case 1: {
-                // Choose the brand
                 printf("Please choose the food you feel like eating today:\n");
                 for(int i=0;i<noOffood;i++) {
                     putchar('a'+i);
                     printf(") %s\n",food[i]);
                 };
-
-                char choice = getchar();
-                int foodChoice = choice - 'a';
+                printf("%c) Go back\n",'a'+noOffood);
+                 choice = getchar();
+                 foodChoice = choice - 'a';
                 getchar();
-                if(choice == 'a'+noOffood) {
+                if(choice == 'a' +noOffood) {
                     state--;
                     break;
                 }
                 foodChoice = choice - 'a';
+
                 state++;
+
                 break;
             }
             case 2: {
@@ -81,6 +85,8 @@ int main() {
                 }
                 printf("%c) Go back\n",'a'+nodrinks);
                 choice = getchar();
+                 drinkChoice=choice-'a';
+
                 if(choice == 'a'+nodrinks) {
                     state--;
                     getchar();
@@ -91,16 +97,18 @@ int main() {
                 break;
             }
             case 4:{
-                printf("Do you want cutlery?");
+                printf("Do you want cutlery?\n");
                 for(j=0;j<2;j++) {
                     putchar('a' + j);
                     printf(") %s\n", cutlery[j]);
                 }
+                printf("%c) Go back\n",'a'+2);
                     choice = getchar();
                     getchar();
-                    int cutleryChoice = choice - 'a';
+                 cutleryChoice = choice - 'a';
                 if(choice == 'a'+2) {
                     state--;
+                    getchar();
                     break;
                 }
                 cutleryChoice = choice - 'a';
@@ -108,7 +116,37 @@ int main() {
                 break;
 
             }
-
+            case 5:{
+                printf("Any aditional info?\n");
+                getchar();
+                gets(info);
+                state++;
+                break;
+            }
+            case 6:{
+                printf("This is your order:\n");
+                printf("-------------\n");
+                printf("-name: %s\n", username);
+                printf("food items:\n");
+                printf("--- %s (%.2f)\n", food[foodChoice][foodnameChoice], prices[foodChoice][foodnameChoice]);
+                printf("--- %s (%.2f)\n", drinks[drinkChoice], drinksPrices[drinkChoice]);
+                printf("Cutlery: %s\n",cutlery[cutleryChoice]);
+                printf("Aditional info: %s\n", info);
+                total=prices[foodChoice][foodnameChoice]+drinksPrices[drinkChoice];
+                printf("Payment amount: %d\n", total);
+                printf("-------------\n");
+                printf("a) Confirm order\n");
+                printf("b) Go back\n");
+                choice = getchar();
+                if(choice=='a') {
+                    printf("Order confirmed! Thank you for buying from us, %s\n", username);
+                    confirmorder = 1;
+                } else {
+                    state--;
+                }
+                getchar();
+                break;
+            }
         }
     }
 
