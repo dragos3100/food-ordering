@@ -16,11 +16,10 @@ int main() {
             {23, 21},
             {23, 22, 19, 21}
     };
-    double total;
     char username[20];
     char password[20];
     char info[50];
-    int nodrinks = 4;
+    int nodrinks = 5;
     char drinks[][20] = {"Coca-cola","Fanta","Lipton","Water","No thanks"};
     double drinksPrices[] = {5, 5, 5, 4, 0};
     int choice, foodChoice, foodnameChoice,cutleryChoice,drinkChoice;
@@ -128,8 +127,8 @@ int main() {
                 printf("-------------\n");
                 printf("-name: %s\n", username);
                 printf("food items:\n");
-                printf("--- %s (%.2f)\n", foodname[foodChoice][foodnameChoice], prices[foodChoice][foodnameChoice]);
-                printf("--- %s (%.2f)\n", drinks[drinkChoice], drinksPrices[drinkChoice]);
+                printf("dish--- %s (%.2f)\n", foodname[foodChoice][foodnameChoice], prices[foodChoice][foodnameChoice]);
+                printf("drink--- %s (%.2f)\n", drinks[drinkChoice], drinksPrices[drinkChoice]);
                 printf("Cutlery: %s\n",cutlery[cutleryChoice]);
                 printf("Aditional info: %s\n", info);
                 printf("Payment amount: %.2f\n", prices[foodChoice][foodnameChoice] + drinksPrices[drinkChoice]);
