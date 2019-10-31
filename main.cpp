@@ -30,7 +30,6 @@ int main() {
             case 0: {
                 printf("Welcome to Food Thingies!\n");
                 printf("Please sign in to continue!\n");
-
                 printf("---Username\n");
                 gets(username);
                 printf("---Password\n");
@@ -53,9 +52,7 @@ int main() {
                     break;
                 }
                 foodChoice = choice - 'a';
-
                 state++;
-
                 break;
             }
             case 2: {
@@ -83,15 +80,12 @@ int main() {
                 }
                 printf("%c) Go back\n",'a'+nodrinks);
                 choice = getchar();
-
                 drinkChoice=choice-'a';
-
                 if(choice == 'a'+nodrinks) {
                     state--;
                     getchar();
                     break;
                 }
-
                 state++;
                 break;
             }
@@ -106,18 +100,15 @@ int main() {
                 choice = getchar();
                     cutleryChoice = choice - 'a';
                 getchar();
-
                 if(cutleryChoice == 2) {
                     state--;
                     break;
                 }
                 state++;
                 break;
-
             }
             case 5:{
                 printf("Any aditional info?\n");
-
                 gets(info);
                 state++;
                 break;
@@ -147,7 +138,5 @@ int main() {
             }
         }
     }
-
-
     return 0;
 }
