@@ -2,7 +2,7 @@
 // Created by Dragos on 11/8/2019.
 //
 #include <stdio.h>
-void showorder(char username[20],char drinks[][20],char foodname[3][4][20],int foodChoice, int foodnameChoice,int drinkChoice, int cutleryChoice, char cutlery[3][15],char info[],double prices[3][4], double drinksPrices[])
+void showorder(char username[20],char **drinks,char ***foodname,int foodChoice, int foodnameChoice,int drinkChoice, int cutleryChoice, char cutlery[3][15],char info[],double **prices, double *drinksPrices)
 {   printf("This is your order:\n");
     printf("-------------\n");
     printf("-name: %s\n", username);

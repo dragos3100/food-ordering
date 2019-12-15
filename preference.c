@@ -2,7 +2,7 @@
 // Created by Dragos on 11/8/2019.
 //
 # include<stdio.h>
-void showfood(int noOffood, char food[][20])
+void showfood(int noOffood, char **food)
 {
     printf("Please choose the food you feel like eating today:\n");
     for(int i=0;i<noOffood;i++) {
@@ -12,7 +12,7 @@ void showfood(int noOffood, char food[][20])
     printf("%c) Go back\n",'a'+noOffood);
 
 }
-void showfoodname(char food[][20], char foodname[3][4][20], int foodChoice, int nofoodname[], double prices[3][4])
+void showfoodname(char **food, char ***foodname, int foodChoice, int nofoodname[], double **prices)
 {
     printf("Please choose the type of %s:\n",food[foodChoice]);
     for(int i=0;i<nofoodname[foodChoice];i++) {
@@ -21,7 +21,7 @@ void showfoodname(char food[][20], char foodname[3][4][20], int foodChoice, int 
     }
     printf("%c) Go back\n",'a'+nofoodname[foodChoice]);
 }
-void showdrink(int nodrinks, char drinks[][20], double drinksPrices[])
+void showdrink(int nodrinks, char **drinks, double*drinksPrices)
 {
     printf("Please choose a drink to go with your Pizza:\n");
     for(int i=0;i<nodrinks;i++) {
