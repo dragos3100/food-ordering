@@ -4,7 +4,11 @@
 
 #ifndef FOOD_ORDERING_LOGIN_H
 #define FOOD_ORDERING_LOGIN_H
-
-void cont(char username[20],char password[20]);
+typedef struct _login{
+    char *username;
+    char *password;
+}login;
+login createLogin();
+void cont(login * a);
 
 #endif //FOOD_ORDERING_LOGIN_H

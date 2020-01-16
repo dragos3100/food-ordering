@@ -21,6 +21,7 @@ int main() {
     char delims[]=":)-";
     char *token;
     printf("Please load the data \n");
+    login a=createLogin();
     int noOfFood;
     char line[MAX_LINE];
     gets(line);
@@ -105,7 +106,7 @@ else
     while(!confirmorder){
         switch (state) {
             case 0: {
-                cont(username, password);
+                cont(&a);
                 state++;
                 break;
             }
@@ -135,7 +136,7 @@ else
                 state++;
                 break;
             }
-            case 6:{showorder(username,drinks,FoodTypes,foodChoice,foodnameChoice,drinkChoice,cutleryChoice,cutlery,info,prices,drinksPrices);
+            case 6:{showorder(&a,drinks,FoodTypes,foodChoice,foodnameChoice,drinkChoice,cutleryChoice,cutlery,info,prices,drinksPrices);
                 choice = getchar();
                 if(choice=='a') {
                     printf("Order confirmed! Thank you for buying from us, %s!\n", username);
